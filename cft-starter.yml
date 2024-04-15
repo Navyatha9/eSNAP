@@ -140,16 +140,16 @@ Resources:
             AVAILABILITY_ZONE=$(ec2-metadata -z | awk '{print $2}')
             IP_ADDRESSES=$(aws ec2 describe-instances --instance-id $INSTANCE_ID --query 'Reservations[].Instances[].NetworkInterfaces[].PrivateIpAddresses[].PrivateIpAddress' --output text)
   
-            mkdir -p /export/appl/data
-            mkfs -t xfs /dev/xvdb
-            echo "/dev/xvdb /export/appl/data xfs defaults,nofail 0 2" >> /etc/fstab
-            mount -a
+            #mkdir -p /export/appl/data
+            #mkfs -t xfs /dev/xvdb
+            #echo "/dev/xvdb /export/appl/data xfs defaults,nofail 0 2" >> /etc/fstab
+            #mount -a
             
             echo "test data file for EBS root volume created at $(date)" > /readme.txt
-            echo "test data file for EBS data volume created at $(date)" > /export/appl/data/readme.txt
+            #echo "test data file for EBS data volume created at $(date)" > /export/appl/data/readme.txt
 
-            cd /export/appl/data
-            wget https://github.com/r2ucrk/HackAMae-3.0-Starter/raw/main/resources/hello.jar
+            #cd /export/appl/data
+            #wget https://github.com/r2ucrk/HackAMae-3.0-Starter/raw/main/resources/hello.jar
   
             SERVICE=/etc/systemd/system/spring-boot-hello.service
             echo "[Unit]" >> $SERVICE
@@ -414,20 +414,20 @@ Resources:
           AVAILABILITY_ZONE=$(ec2-metadata -z | awk '{print $2}')
           IP_ADDRESSES=$(aws ec2 describe-instances --instance-id $INSTANCE_ID --query 'Reservations[].Instances[].NetworkInterfaces[].PrivateIpAddresses[].PrivateIpAddress' --output text)
 
-          mkdir -p /export/appl/data
-          mkfs -t xfs /dev/xvdb
-          echo "/dev/xvdb /export/appl/data xfs defaults,nofail 0 2" >> /etc/fstab
-          mkdir -p /export/appl/data2
-          echo "$(basename ${EFS.Arn}).efs.${AWS::Region}.amazonaws.com:/ /export/appl/data2 efs defaults 0 0" >> /etc/fstab
-          sleep 60
-          mount -a
+          #mkdir -p /export/appl/data
+          #mkfs -t xfs /dev/xvdb
+          #echo "/dev/xvdb /export/appl/data xfs defaults,nofail 0 2" >> /etc/fstab
+          #mkdir -p /export/appl/data2
+          #echo "$(basename ${EFS.Arn}).efs.${AWS::Region}.amazonaws.com:/ /export/appl/data2 efs defaults 0 0" >> /etc/fstab
+          #sleep 60
+          #mount -a
           
           echo "test data file for EBS root volume created at $(date)" > /readme.txt
-          echo "test data file for EBS data volume created at $(date)" > /export/appl/data/readme.txt
-          echo "test data file for EFS data2 volume created at $(date)" > /export/appl/data2/readme.txt
+          #echo "test data file for EBS data volume created at $(date)" > /export/appl/data/readme.txt
+          #echo "test data file for EFS data2 volume created at $(date)" > /export/appl/data2/readme.txt
 
-          cd /export/appl/data
-          wget https://github.com/cbkidwell/Hackamae-202404/raw/main/hello.jar
+          #cd /export/appl/data
+          #wget https://github.com/cbkidwell/Hackamae-202404/raw/main/hello.jar
 
           SERVICE=/etc/systemd/system/spring-boot-hello.service
           echo "[Unit]" >> $SERVICE
@@ -563,20 +563,20 @@ Resources:
           AVAILABILITY_ZONE=$(ec2-metadata -z | awk '{print $2}')
           IP_ADDRESSES=$(aws ec2 describe-instances --instance-id $INSTANCE_ID --query 'Reservations[].Instances[].NetworkInterfaces[].PrivateIpAddresses[].PrivateIpAddress' --output text)
 
-          mkdir -p /export/appl/data
-          mkfs -t xfs /dev/xvdb
-          echo "/dev/xvdb /export/appl/data xfs defaults,nofail 0 2" >> /etc/fstab
-          mkdir -p /export/appl/data2
-          echo "$(basename ${EFS.Arn}).efs.${AWS::Region}.amazonaws.com:/ /export/appl/data2 efs defaults 0 0" >> /etc/fstab
-          sleep 60
-          mount -a
+          #mkdir -p /export/appl/data
+          #mkfs -t xfs /dev/xvdb
+          #echo "/dev/xvdb /export/appl/data xfs defaults,nofail 0 2" >> /etc/fstab
+          #mkdir -p /export/appl/data2
+          #echo "$(basename ${EFS.Arn}).efs.${AWS::Region}.amazonaws.com:/ /export/appl/data2 efs defaults 0 0" >> /etc/fstab
+          #sleep 60
+          #mount -a
           
           echo "test data file for EBS root volume created at $(date)" > /readme.txt
-          echo "test data file for EBS data volume created at $(date)" > /export/appl/data/readme.txt
-          echo "test data file for EFS data2 volume created at $(date)" > /export/appl/data2/readme.txt
+          #echo "test data file for EBS data volume created at $(date)" > /export/appl/data/readme.txt
+          #echo "test data file for EFS data2 volume created at $(date)" > /export/appl/data2/readme.txt
 
-          cd /export/appl/data
-          wget https://github.com/cbkidwell/Hackamae-202404/raw/main/hello.jar
+          #cd /export/appl/data
+          #wget https://github.com/cbkidwell/Hackamae-202404/raw/main/hello.jar
 
           SERVICE=/etc/systemd/system/spring-boot-hello.service
           echo "[Unit]" >> $SERVICE
